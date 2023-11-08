@@ -22,4 +22,37 @@ describe("validate", () => {
       )
     ).toBe(true);
   });
+
+  test("returns false for incomplete validationObject and data", () => {
+    expect(
+      validate(
+        {
+          callback: (data) => {
+            console.log("data was defined as:", JSON.stringify(data));
+          },
+        },
+        {
+          someNumber: "number",
+          someArray: ["test1", "test2"],
+        }
+      )
+    ).toBe(false);
+  })
+
+  test("returns false for wrong data values", () => {
+    expect(
+      validate(
+        {
+          callback: (data) => {
+            console.log("data was defined as:", JSON.stringify(data));
+          },
+        },
+        {
+          someNumber: 1,
+          someNumber: "number",
+          someArray: ["test1", "test2"],
+        }
+      )
+    ).toBe(false);
+  })
 });

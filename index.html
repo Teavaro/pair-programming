@@ -3,9 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <title>Index</title>
-    <script src="index.js"></script>
+    <script>
+      const handleMessage = (data) => {
+        localStorage.setItem("teavaro", data);
+      }
+      window.addEventListener("message", (event) => {
+        handleMessage(event.data);
+      });
+    </script>
   </head>
   <body>
     <p>Index page</p>
+
+    <iframe
+      width="0"
+      height="0"
+      src="file:///Users/carlos/Personal/repos/pair-programming/data.html">
+    </iframe>
   </body>
 </html>
