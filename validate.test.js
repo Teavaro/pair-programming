@@ -5,6 +5,10 @@ describe("validate", () => {
     expect(validate(null)).toBe(false);
   });
 
+  test("returns true for empty validation object", () => {
+    expect(validate([], {})).toBe(true);
+  });
+
   test("returns true for correct validation object of type string", () => {
     expect(
       validate(
@@ -15,7 +19,11 @@ describe("validate", () => {
           },
           {
             fieldName: "someString",
-            fieldType: "number",
+            fieldType: "string",
+          },
+          {
+            fieldName: "someArray",
+            fieldType: "array",
           },
         ],
         {
